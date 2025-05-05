@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&display=swap');
+
+.reem-kufi{
+    font-family: "Reem Kufi", sans-serif;
+    font-size:77px ;
+  }
+
+
+
+.body {
+    font-family: 'Inter', sans-serif;
+  }
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradientAnimation 3s ease infinite;
+  }
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }

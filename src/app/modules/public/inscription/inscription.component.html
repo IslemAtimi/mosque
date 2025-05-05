@@ -1,0 +1,131 @@
+<div class="w-full  bg-white/70 backdrop-blur-sm" style="background-image: url('assets/images/back.jpg'); background-size: cover;">
+    <div dir="rtl" class="  py-12 px-4 sm:px-6 lg:px-8 font-[Tajawal] mx-auto bg-white/50">
+    <div dir="ltr" class="flex flex-col md:flex-row justify-center items-center md:justify-between mb-10">
+        <!-- À gauche : infos année scolaire -->
+        <div class="md:order-2 text-right text-xl text-black leading-relaxed">
+          <div>السنة الدراسية: ....هـ/14....هـ</div>
+          <div>الموافق لـ: ....م/20....م</div>
+        </div>
+      
+        <!-- Centre : Bismillah -->
+        <div  class="md:order-2 order-first text-center flex-1 text-4xl font-semibold text-black amiri-bold">
+          <span>بــــسم الله الرحمـن الرحيـــم</span>
+        </div>
+      
+        <!-- Logo à droite -->
+        <div class="w-20 h-20 md:order-2">
+          <img src="assets/images/logo.jpg" alt="Logo" class="w-full h-full object-contain rounded-full border border-emerald-400 shadow-md" />
+        </div>
+      </div>
+    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-8 border border-emerald-300 animate-fade-in">
+      <h1 class="text-3xl font-bold text-center text-emerald-800 mb-10 border-b-2 pb-3 border-emerald-400 animate-slide-down amiri-bold">استمارة التسجيل</h1>
+  
+      <form class="space-y-8 ">
+  
+        <!-- معلومات الطالب -->
+        <section class="animate-fade-in-up delay-100">
+          <h2 class="text-xl font-semibold text-emerald-700 mb-4 border-b border-emerald-300 pb-1 ">معلومات الطالب:</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block mb-1">اللقب</label>
+              <input type="text" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+            </div>
+            <div>
+                <label class="block mb-1">الاسم</label>
+                <input type="text" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+              </div>
+            <div>
+              <label class="block mb-1">العنوان</label>
+              <input type="text" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+            </div>
+            <div>
+              <label class="block mb-1">تاريخ الميلاد</label>
+              <input type="date" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+            </div>
+            <div>
+                <label class="block mb-1">مكان الميلاد</label>
+                <input type="text" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+              </div>
+            <div>
+              <label class="block mb-1">المستوى الدراسي</label>
+              <input type="text" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+            </div>
+          </div>
+        </section>
+  
+        <!-- الحالة الصحية -->
+        <section class="animate-fade-in-up delay-200">
+          <h2 class="text-xl font-semibold text-emerald-700 mb-4 border-b border-emerald-300 pb-1">الحالة الصحية:</h2>
+          <div class="space-y-3">
+            <div>
+              <label class="block mb-1">هل الطالب مصاب بمرض مزمن؟</label>
+              <div class="flex gap-4">
+                <label><input type="radio" name="disease" /> نعم</label>
+                <label><input type="radio" name="disease" /> لا</label>
+              </div>
+            </div>
+            <input type="text" placeholder="اذكر المرض" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+            <input type="text" placeholder="هل أجرى عملية جراحية؟ ما نوعها؟" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+          </div>
+        </section>
+  
+        <!-- الحالة الاجتماعية -->
+        <section class="animate-fade-in-up delay-300">
+          <h2 class="text-xl font-semibold text-emerald-700 mb-4 border-b border-emerald-300 pb-1">الحالة الاجتماعية:</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block mb-1">اسم الولي</label>
+              <input type="text" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+            </div>
+            <div>
+              <label class="block mb-1">رقم الهاتف</label>
+              <input type="text" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+            </div>
+            <div>
+              <label class="block mb-1">هل الأب متوفي؟</label>
+              <div class="flex gap-4">
+                <label><input type="radio" name="father_dead" /> نعم</label>
+                <label><input type="radio" name="father_dead" /> لا</label>
+              </div>
+            </div>
+            <div>
+              <label class="block mb-1">قرابته من الطالب</label>
+              <input type="text" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+            </div>
+          </div>
+        </section>
+  
+        <!-- معلومات عامة -->
+        <section class="animate-fade-in-up delay-400">
+          <h2 class="text-xl font-semibold text-emerald-700 mb-4 border-b border-emerald-300 pb-1">معلومات عامة:</h2>
+          <div class="space-y-3">
+            <input type="text" placeholder="في أي مسجد درس الطالب سابقًا؟" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+            <input type="text" placeholder="كم يحفظ من القرآن؟" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+            <input type="text" placeholder="من هو معلمه الحالي؟ وفي أي سنة؟" class="w-full border border-emerald-300 rounded-lg p-2 shadow-sm" />
+          </div>
+        </section>
+  
+        <!-- تصريح ولي الأمر -->
+        <section class="animate-fade-in-up delay-500">
+          <h2 class="text-xl font-semibold text-emerald-700 mb-4 border-b border-emerald-300 pb-1">تصريح ولي الأمر:</h2>
+          <p class="text-sm mb-2 text-gray-700">
+            أنا الممضي أسفله السيد: <input type="text" class="border rounded p-1 w-48 inline-block" />
+            ولي الطالب <input type="text" class="border rounded p-1 w-48 inline-block" />
+            أصرح برغبتي في انضمام ابني إلى المدرسة القرآنية لمسجد النور، والالتزام بالنظام الداخلي.
+          </p>
+        </section>
+  
+        <!-- Signatures -->
+        <!-- <div class="flex justify-between text-sm text-gray-600 mt-8">
+          <span>إمضاء الولي</span>
+          <span>مصادقة البلدية</span>
+        </div> -->
+  
+        <!-- Submit button -->
+        <div class="text-center mt-10">
+          <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 transition duration-300 text-white px-6 py-2 rounded-lg shadow-lg">إرسال</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
