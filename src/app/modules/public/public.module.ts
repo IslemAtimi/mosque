@@ -5,17 +5,26 @@ import { PublicRoutingModule } from './public-routing.module';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ProfilComponent } from './profil/profil.component';
 import { MatTableModule } from '@angular/material/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EncouragementCardsComponent } from './encouragement-cards/encouragement-cards.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [
     InscriptionComponent,
-    ProfilComponent
+    ProfilComponent,
+    EncouragementCardsComponent
   ],
   imports: [
     CommonModule,
     PublicRoutingModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule,
   ]
 })
 export class PublicModule { }

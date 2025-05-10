@@ -1,7 +1,10 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { EtudiantDetailsDto, EtudiantsDto } from 'app/models/models';
 import { EtudiantsService } from 'app/services/etudiants.service';
+import { ReferencesService } from 'app/services/references.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-profil',
@@ -11,13 +14,20 @@ import { EtudiantsService } from 'app/services/etudiants.service';
 export class ProfilComponent implements OnInit {
 
   etudiant:EtudiantDetailsDto
+  id:string
+  niveauEtudeLabel:string
+  niveauEtudeLabelAr:string
   constructor(
     private viewportScroller: ViewportScroller,
-    private etdService:EtudiantsService
-  ) { }
+    private etdService:EtudiantsService,
+    private refService:ReferencesService,
+    private route:ActivatedRoute
+  ) {
+    this.id=route.snapshot.paramMap.get('id');
+   }
 
   ngOnInit(): void {
-    this.getEtudiant('08dd85c1-f5f1-4910-8841-9a64739ecb1e');
+    this.getEtudiant(this.id);
   }
 
   mode:'default'|'info'|'quran'|'scolaire'|'absence'|'recompence'|'event'='default';
@@ -34,8 +44,11 @@ export class ProfilComponent implements OnInit {
   getEtudiant(id:string){
     this.etdService.getEtudiantDetailsById(id).subscribe((res)=>{
       this.etudiant=res
+
     })
   }
+
+  
 
 
 

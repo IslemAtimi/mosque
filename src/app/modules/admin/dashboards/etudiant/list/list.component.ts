@@ -56,18 +56,7 @@ export class ListComponent implements OnInit {
    */
   ngOnInit(): void
   {
-    
-      
-    this._etudiantsService.getEtudiants()
-          .pipe(takeUntil(this._unsubscribeAll))
-          .subscribe((result: Pagedresult<EtudiantsDto[]>) => {
-
-              // Update the counts
-              this.contactsCount = result.totalCount;
-              this.contacts=result.items
-              // Mark for check
-              this._changeDetectorRef.markForCheck();
-          });
+    this.getEtudiants()
 
       // Get the contact
       this._contactsService.contact$
@@ -81,17 +70,7 @@ export class ListComponent implements OnInit {
               this._changeDetectorRef.markForCheck();
           });
 
-      // Get the countries
-      this._contactsService.countries$
-          .pipe(takeUntil(this._unsubscribeAll))
-          .subscribe((countries: Country[]) => {
-
-              // Update the countries
-              this.countries = countries;
-
-              // Mark for check
-              this._changeDetectorRef.markForCheck();
-          });
+     
 
       // Subscribe to search input field value changes
       this.searchInputControl.valueChanges
@@ -110,51 +89,66 @@ export class ListComponent implements OnInit {
               this._changeDetectorRef.markForCheck();
           });
 
+          
       // Subscribe to MatDrawer opened change
-      this.matDrawer.openedChange.subscribe((opened) => {
-          if ( !opened )
-          {
-              // Remove the selected contact when drawer closed
-              this.selectedContact = null;
+      // this.matDrawer.openedChange.subscribe((opened) => {
+      //     if ( !opened )
+      //     {
+      //         // Remove the selected contact when drawer closed
+      //         this.selectedContact = null;
 
-              // Mark for check
-              this._changeDetectorRef.markForCheck();
-          }
-      });
+      //         // Mark for check
+      //         this._changeDetectorRef.markForCheck();
+      //     }
+      // });
 
       // Subscribe to media changes
-      this._fuseMediaWatcherService.onMediaChange$
+      // this._fuseMediaWatcherService.onMediaChange$
+      //     .pipe(takeUntil(this._unsubscribeAll))
+      //     .subscribe(({matchingAliases}) => {
+
+      //         // Set the drawerMode if the given breakpoint is active
+      //         if ( matchingAliases.includes('lg') )
+      //         {
+      //             this.drawerMode = 'side';
+      //         }
+      //         else
+      //         {
+      //             this.drawerMode = 'over';
+      //         }
+
+      //         // Mark for check
+      //         this._changeDetectorRef.markForCheck();
+      //     });
+
+          
+     
+
+          
+  }
+  getEtudiants(){
+    this._etudiantsService.getEtudiants()
           .pipe(takeUntil(this._unsubscribeAll))
-          .subscribe(({matchingAliases}) => {
+          .subscribe((result: Pagedresult<EtudiantsDto[]>) => {
 
-              // Set the drawerMode if the given breakpoint is active
-              if ( matchingAliases.includes('lg') )
-              {
-                  this.drawerMode = 'side';
-              }
-              else
-              {
-                  this.drawerMode = 'over';
-              }
-
+              // Update the counts
+              this.contactsCount = result.totalCount;
+              this.contacts=result.items
               // Mark for check
               this._changeDetectorRef.markForCheck();
           });
+  }
 
-      // Listen for shortcuts
-      fromEvent(this._document, 'keydown')
-          .pipe(
-              takeUntil(this._unsubscribeAll),
-              filter<KeyboardEvent>(event =>
-                  (event.ctrlKey === true || event.metaKey) // Ctrl or Cmd
-                  && (event.key === '/') // '/'
-              )
-          )
-          .subscribe(() => {
-              this.createContact();
-          });
+  ViewEtudiant(id:string){
+    this._router.navigate(['public',id]);
+  }
 
-          
+  deleteEtudiant(id:string){
+    var value=confirm('هل أنت متأكد من حذف هذا الطالب؟ لا يمكن التراجع عن هذا الإجراء!')
+    if(value==true)
+    this._etudiantsService.deleteEtudiant(id).subscribe(x=>{
+      this.getEtudiants()
+    });
   }
 
   /**
@@ -188,15 +182,7 @@ export class ListComponent implements OnInit {
    */
   createContact(): void
   {
-      // Create the contact
-      this._contactsService.createContact().subscribe((newContact) => {
-
-          // Go to the new contact
-          this._router.navigate(['./', newContact.id], {relativeTo: this._activatedRoute});
-
-          // Mark for check
-          this._changeDetectorRef.markForCheck();
-      });
+      this._router.navigate(['public']);
   }
 
   /**

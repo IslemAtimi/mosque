@@ -1,8 +1,7 @@
-<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+<div class=" flex flex-col w-full overflow-hidden">
 
     <mat-drawer-container
-        class="flex-auto h-full bg-card dark:bg-transparent"
-        (backdropClick)="onBackdropClicked()">
+        class="flex-auto h-full bg-card dark:bg-transparent">
 
         <!-- Drawer -->
         <mat-drawer
@@ -82,7 +81,7 @@
                                     class="z-20 flex items-center px-6 py-4 md:px-8 cursor-pointer border-b"
                                     [ngClass]="{'hover:bg-gray-100 dark:hover:bg-hover': !selectedContact || selectedContact.id !== contact.id,
                                                 'bg-primary-50 dark:bg-hover': selectedContact && selectedContact.id === contact.id}"
-                                    [routerLink]="['./', contact.id]">
+                                    >
                                     <div class="flex flex-0 items-center justify-center w-10 h-10 rounded-full overflow-hidden">
                                         <ng-container *ngIf="contact.avatar">
                                             <img
@@ -100,7 +99,26 @@
                                         <div class="font-medium leading-5 truncate">{{contact.nom}} {{contact.nomAr}}</div>
                                         <div class="leading-5 truncate text-secondary">{{contact.prenom}} {{contact.prenomAr}}</div>
                                     </div>
+                                    
+                                    <div class="ml-auto flex justify-end flex-row-reverse">
+                                        <button 
+                                        class=""
+                                        mat-icon-button
+                                        (click)="deleteEtudiant(contact.id)"
+                                        >
+                                        <mat-icon
+                                            class="text-red-500 cursor-pointer "
+                                            [svgIcon]="'heroicons_outline:trash'"></mat-icon>
+                                        </button>
+                                        <button
+                                        class="text-green-500 mr-5"
+                                        mat-icon-button
+                                        (click)="ViewEtudiant(contact.id)()">
+                                        <mat-icon [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
+                                    </button>
+                                </div>
                                 </a>
+                                
                             </ng-container>
                         </ng-container>
 

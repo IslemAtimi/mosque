@@ -25,8 +25,8 @@
               </div>
             </div>
             <div class="md:w-3/4 text-center md:text-left md:pl-8">
-              <h1 class="text-3xl md:text-4xl font-semibold mb-2 reem-kufi">أتشي أحمد إسلام</h1>
-              <h2 class="text-xl md:text-2xl font-medium mb-4">Atchi Ahmed Islam</h2>
+              <h1 class="text-3xl md:text-4xl font-semibold mb-2 reem-kufi">{{etudiant.nomAr}}&nbsp;{{etudiant.prenomAr}}</h1>
+              <h2 class="text-xl md:text-2xl font-medium mb-4">{{etudiant.nom}}&nbsp;{{etudiant.prenom}}</h2>
               <div class="flex flex-wrap justify-center md:justify-start gap-3">
                 <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-1">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -136,14 +136,14 @@
 
               <div class="w-full  h-0.5 bg-gray-200 my-1"></div>
               
-              <div class="flex justify-between">
+              <div  class="flex justify-between">
                 <div class="flex flex-col  items-start mt-4 lg:mt-0 lg:ml-8">
                     <div class="text-lg text-gray-500">Niveau d'etude :</div>
-                    <div class="text-xl font-semibold leading-none  ">5 eme</div>
+                    <div class="text-xl font-semibold leading-none  ">{{etudiant?.niveauEtude}}</div>
                 </div>
                 <div dir="rtl" class="flex flex-col  items-start mt-4 lg:mt-0 lg:mr-8">
                     <div class="text-xl text-gray-500"> المستوى الدراسي:</div>
-                    <div class="md:text-xl text-3xl font-semibold leading-none  ">الحانسة</div>
+                    <div class="md:text-xl text-3xl font-semibold leading-none  ">{{etudiant?.niveauEtudeAr}}</div>
                 </div>
               </div>
 
@@ -316,7 +316,9 @@
                 </div>
               </div>
               
-            
+            <ng-container *ngIf="mode=='recompence'">
+                <app-encouragement-cards [studentId]="id"></app-encouragement-cards>
+            </ng-container>
             <!-- Projects -->
             <div>
               <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center">

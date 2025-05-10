@@ -1,0 +1,61 @@
+<div class="p-4">
+    <h2 class="text-5xl font-bold mb-4 text-center text-gray-800 reem-kufi">بطاقات الاستحسان</h2>
+  
+    <div class="mb-6">
+      <p dir="rtl" class="font-semibold text-green-600">
+        عدد البطاقات المتاحة: {{ availableCards.length }}
+      </p>
+      <p class=" text-3xl text-center opacity-80 italic reem-kufi">
+            بَارَكَ اللهُ فِيكَ
+        </p>
+      <div class="w-full mx-auto mt-6 flex flex-wrap justify-start flex-col md:flex-row gap-4">
+        <div *ngFor="let card of studentCards" class="relative w-60 text-white rounded-2xl shadow-xl overflow-hidden">
+
+            <!-- Image de fond floue -->
+            <div class="absolute inset-0 bg-[url('assets/images/mosque.jpg')] bg-cover bg-center blur-sm z-0"></div>
+
+            <!-- Contenu net au-dessus -->
+            <div class="relative z-10 p-4">
+                <div class="w-full flex items-center justify-center">
+                <div class="text-xl font-bold flex justify-between">
+                    <img src="assets/images/logo.jpg" alt="Logo" class="w-10 h-10 object-contain rounded-full border border-emerald-400 shadow-md" />
+                    <p class="mt-2 reem-kufi">&nbsp;بطاقة استحســان &nbsp;</p>
+
+                    <img src="assets/images/logo.jpg" alt="Logo" class="w-10 h-10 object-contain rounded-full border border-emerald-400 shadow-md" />
+                </div>
+                <span class="text-sm opacity-80">
+                    {{ card.date | date: 'dd/MM/yyyy' }}
+                </span>
+                </div>
+
+                <div dir="rtl" class="mt-4">
+                    <p class="text-lg font-semibold">مُنِحَت من طرف : <strong>{{ addedByAdminName }}</strong></p>
+                    <p class="mt-2 text-base leading-relaxed">
+                   فــي {{ card.reason }} 
+                </p>
+                </div>
+
+                <p dir="rtl" class="text-sm opacity-90 mt-1">
+                    تم تقديم هذه البطاقة بتاريخ : <strong>{{ card.dateAdded | date: 'dd/MM/yyyy' }}</strong>
+                  </p>
+                  <p *ngIf="card.isConsumed" dir="rtl" class="text-sm opacity-90 mt-1">
+                    تم استعمال هذه البطاقة بتاريخ : <strong>{{ card.dateConsumed | date: 'dd/MM/yyyy' }}</strong>
+                  </p>
+
+                <div class="mt-1">
+                <span class="inline-block bg-white text-emerald-600 text-xs font-semibold px-3 py-1 rounded-full">
+                    {{ card.isConsumed ? 'تم استعمالها' : 'صالحة للاستعمال' }}
+                </span>
+                </div>
+                
+            </div>
+            </div>
+
+      </div>
+      
+      
+    </div>
+  
+    
+  </div>
+  

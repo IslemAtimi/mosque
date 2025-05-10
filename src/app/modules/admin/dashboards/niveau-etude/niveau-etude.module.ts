@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { DetailsComponent } from './details/details.component';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
