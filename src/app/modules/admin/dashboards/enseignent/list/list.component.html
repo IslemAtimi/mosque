@@ -1,0 +1,155 @@
+<section class="relative container px-0 mx-auto my-5">
+    <div class="sm:flex sm:items-center sm:justify-between">
+        <h2 class="text-lg font-medium text-gray-800 dark:text-white">Enseignants</h2>
+
+        <div class="flex items-center mt-4 gap-x-3">
+            
+
+            <button (click)="createEnseignant()" class="flex items-center justify-center w-1/2 px-2 pr-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg sm:w-auto gap-x-2 hover:bg-blue-600 dark:hover:bg-blue-500 dark:bg-blue-600">
+                <mat-icon class="text-white" [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+
+                <span>Ajouter</span>
+            </button>
+
+            
+
+            
+        </div>
+    </div>
+    
+    <div class="flex flex-col mt-6">
+        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                        <thead class="bg-gray-50 dark:bg-gray-800">
+                            <tr>
+                                <th scope="col" class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    Photo
+                                </th>
+                                <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center gap-x-3">
+                                    
+                                        <span>Nom (ar)</span>
+                                    </div>
+                                </th>
+                                <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center gap-x-3 reem-kufi">
+                                        <span>Nom (fr)</span>
+                                    </div>
+                                </th>
+
+                                <th scope="col" class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    Telephone
+                                </th>
+
+                                
+
+                                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    Date Naissance
+                                </th>
+
+                                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    Ajouter&nbsp;/Supprimer
+                                </th>
+
+                                
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                            <tr *ngFor="let enseignant of enseignants">
+                                <td class="px-4 py-4 ">
+                                    <div class="mx-4 flex items-center justify-center w-12 h-12 text-blue-500 bg-blue-100 rounded-full dark:bg-gray-800">
+                                        <img src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80"
+                                            class="w-12 h-12 rounded-full" alt="">
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div class="inline-flex items-center gap-x-5">
+
+                                        <div class="flex items-center gap-x-2 w-32">
+                                                                                        
+                                            <div>
+                                                <p dir="rtl" class="text-lg font-normal text-gray-500 dark:text-gray-400 reem-kufi">الشيخ</p>
+                                                <h2 dir="rtl" class="font-normal text-gray-800 dark:text-white ">{{enseignant.nomAr}}&nbsp;{{enseignant.prenomAr}}</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div class="inline-flex items-center gap-x-10">
+
+                                        <div class="flex items-center gap-x-2 w-32">
+                                                                                        
+                                            <div>
+                                                <p dir="rtl" class="text-lg font-normal text-gray-500 dark:text-gray-400 reem-kufi">الشيخ</p>
+                                                <h2 class="font-normal text-gray-800 dark:text-white ">{{enseignant.nom}}&nbsp;{{enseignant.prenom}}</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-12 py-4 text-sm font-normal text-gray-700 whitespace-nowrap">
+                                    {{enseignant.telephone}}
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{enseignant.dateNaissance}}</td>
+                                <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div class="ml-auto flex justify-end flex-row-reverse">
+                                        <button 
+                                        class=""
+                                        mat-icon-button
+                                        (click)="deleteEnseignant('')"
+                                        >
+                                        <mat-icon
+                                            class="text-red-500 cursor-pointer "
+                                            [svgIcon]="'heroicons_outline:trash'"></mat-icon>
+                                        </button>
+                                        <button
+                                        class="text-green-500 mr-5"
+                                        mat-icon-button
+                                        (click)="ViewEnseignant('')">
+                                        <mat-icon [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
+                                    </button>
+                                </div>
+                                </td>
+                            </tr>
+
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex items-center justify-between mt-6">
+        <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+            </svg>
+
+            <span>
+                previous
+            </span>
+        </a>
+
+        <div class="items-center hidden md:flex gap-x-3">
+            <a href="#" class="px-2 py-1 text-sm text-blue-500 rounded-md dark:bg-gray-800 bg-blue-100/60">1</a>
+            <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">2</a>
+            <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">3</a>
+            <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">...</a>
+            <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">12</a>
+            <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">13</a>
+            <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">14</a>
+        </div>
+
+        <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+            <span>
+                Next
+            </span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
+        </a>
+    </div>
+</section>

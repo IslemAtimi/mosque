@@ -38,8 +38,47 @@ export class EtudiantsService {
         return this._httpClient.delete('http://localhost:7171/etudiants',{params});
       }
 
-      createEtudiantDetails(input: InscriptionDto): Observable<EtudiantsDto> {
-        return this._httpClient.post<EtudiantsDto>('http://localhost:7171/etudiants/inscription', input);
+      createEtudiantDetails(data: InscriptionDto,photo?:File) {
+        const formData = new FormData();
+
+    // Ajouter les champs simples
+    formData.append('Nom', data.nom);
+    formData.append('Prenom', data.prenom);
+    formData.append('NomAr', data.nomAr);
+    formData.append('PrenomAr', data.prenomAr);
+    formData.append('DateNaissance', data.dateNaissance.toString());
+    formData.append('LieuNaissance', data.lieuNaissance);
+    formData.append('DateInscription', data.dateInscription.toString());
+    formData.append('Sexe', data.sexe.toString());
+
+    formData.append('NomPere', data.nomPere);
+    formData.append('PrenomPere', data.prenomPere);
+    formData.append('NomArPere', data.nomArPere);
+    formData.append('PrenomArPere', data.prenomArPere);
+    formData.append('Adresse', data.adresse);
+    formData.append('PereDecede', String(data.pereDecede));
+    formData.append('RelationWithLEtudiant', data.relationWithLEtudiant);
+    formData.append('Telephone', data.telephone);
+    formData.append('Commentaire', data.commentaire);
+    formData.append('LastMosquee', data.lastMosquee);
+    formData.append('Quran', data.quran);
+    formData.append('NomEnseignent', data.nomEnseignent);
+    formData.append('GroupeSanguin', data.groupeSanguin);
+
+    formData.append('ADesAllergies', String(data.aDesAllergies));
+    formData.append('DetailsAllergies', data.detailsAllergies);
+    formData.append('AMaladiesChroniques', String(data.aMaladiesChroniques));
+    formData.append('DetailsMaladiesChroniques', data.detailsMaladiesChroniques);
+    formData.append('ASubiOperation', String(data.aSubiOperation));
+    formData.append('DetailsOperations', data.detailsOperations);
+
+    formData.append('NiveauEtude', data.niveauEtude.toString());
+    formData.append('CodePin', data.codePin);
+    formData.append('Remarques', data.remarques);
+
+    if(photo!=null )formData.append('file', photo);
+    
+        return this._httpClient.post<EtudiantsDto>('http://localhost:7171/etudiants/inscription', formData);
       }
 
       getEtudiantWithInscription(id:string): Observable<InscriptionDto> {

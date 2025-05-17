@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
+import { user } from 'app/mock-api/common/user/data';
+import { EnseignantService } from 'app/services/enseignant.service';
 
 @Component({
     selector     : 'auth-sign-up',
@@ -21,6 +23,7 @@ export class AuthSignUpComponent implements OnInit
     };
     signUpForm: FormGroup;
     showAlert: boolean = false;
+    fromEnseignant: boolean = false;
 
     /**
      * Constructor
@@ -28,9 +31,17 @@ export class AuthSignUpComponent implements OnInit
     constructor(
         private _authService: AuthService,
         private _formBuilder: FormBuilder,
+        private enseignantService: EnseignantService,
         private _router: Router
     )
     {
+        const navigation = this._router.getCurrentNavigation();
+        const fromLogin = navigation?.extras?.state?.['fromEnseignant'];
+
+    if (fromLogin) {
+      this.fromEnseignant=true
+      console.log('Navigué depuis login');
+    }
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -44,12 +55,24 @@ export class AuthSignUpComponent implements OnInit
     {
         // Create the form
         this.signUpForm = this._formBuilder.group({
-                name      : ['', Validators.required],
-                email     : ['', [Validators.required, Validators.email]],
+                nom      : ['', Validators.required],
+                prenom      : ['', Validators.required],
+                nomAr      : ['', Validators.required],
+                prenomAr      : ['', Validators.required],
+                dateNaissance      : ['', Validators.required],
+                adress      : ['', Validators.required],
+                telephone      : ['', Validators.required],
+                username     : ['', Validators.required],
                 password  : ['', Validators.required],
-                company   : [''],
-                agreements: ['', Validators.requiredTrue]
-            }
+                passwordC   : ['', Validators.required],
+            },
+            {
+                validators: (group) => {
+                  const pass = group.get('password')?.value;
+                  const confirm = group.get('passwordC')?.value;
+                  return pass === confirm ? null : { notSame: true };
+                }
+              }
         );
     }
 
@@ -62,6 +85,8 @@ export class AuthSignUpComponent implements OnInit
      */
     signUp(): void
     {
+        console.log(this.signUpForm.value);
+        console.log(this.signUpForm);
         // Do nothing if the form is invalid
         if ( this.signUpForm.invalid )
         {
@@ -69,18 +94,18 @@ export class AuthSignUpComponent implements OnInit
         }
 
         // Disable the form
-        this.signUpForm.disable();
+        //this.signUpForm.disable();
 
         // Hide the alert
         this.showAlert = false;
 
         // Sign up
-        this._authService.signUp(this.signUpForm.value)
+        this.enseignantService.createEnseignant(this.signUpForm.value)
             .subscribe(
                 (response) => {
 
                     // Navigate to the confirmation required page
-                    this._router.navigateByUrl('/confirmation-required');
+                    this._router.navigateByUrl('/account/sign-in');
                 },
                 (response) => {
 
@@ -88,7 +113,7 @@ export class AuthSignUpComponent implements OnInit
                     this.signUpForm.enable();
 
                     // Reset the form
-                    this.signUpNgForm.resetForm();
+                    //this.signUpNgForm.resetForm();
 
                     // Set the alert
                     this.alert = {

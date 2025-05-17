@@ -72,7 +72,7 @@ export interface EtudiantDetailsDto {
     pereDecede: boolean;
     relationWithLEtudiant: string;
     telephone: string;
-    commentaire: string;
+    commentaire?: string;
     lastMosquee: string;
     quran: string;
     nomEnseignent: string;
@@ -85,7 +85,35 @@ export interface EtudiantDetailsDto {
     detailsOperations: string;
     codePin: string;
     niveauEtude:number
-    remarques: string;
+    remarques?: string;
+  }
+
+  export interface EnseignantDto {
+    Id: string;
+    Nom: string;
+    Prenom: string;
+    NomAr: string;
+    PrenomAr: string;
+    DateNaissance?: Date;
+    Adresse: string;
+    Telephone: string;
+  }
+
+  export interface RegisterInput {
+    nom: string;
+    prenom: string;
+    nomAr: string;
+    prenomAr: string;
+    dateNaissance?: Date;
+    adress: string;
+    telephone: string;
+    username: string;
+    password: string;
+  }
+
+  export interface TokenResponse {
+    token: string;
+    status: string;
   }
 
 

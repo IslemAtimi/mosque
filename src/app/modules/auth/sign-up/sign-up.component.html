@@ -1,20 +1,27 @@
-<div class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
-    <div class="md:flex md:items-center md:justify-end w-full sm:w-auto md:h-full md:w-1/2 py-8 px-4 sm:p-12 md:p-16 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none sm:bg-card">
-        <div class="w-full max-w-80 sm:w-80 mx-auto sm:mx-0">
+<div  class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start ">
+    <div class="md:flex md:items-center md:justify-end   md:h-full  md:py-1 py-8 px-4 sm:p-12 md:p-16 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none sm:bg-card"
+    [ngClass]="{'w-full':fromEnseignant, 'md:w-1/2':!fromEnseignant}"
+    >
+        <div class="w-full  mx-auto ">
             <!-- Logo -->
-            <div class="w-12">
-                <img src="assets/images/logo/logo.svg">
+            <div class="w-full flex justify-between ">
+                <img src="assets/images/logo/logo.png" alt="Logo" class="w-24">
+                <!-- Title -->
+                 <div>
+
+                    <div dir="rtl" class="mt-8 text-4xl font-extrabold tracking-tight leading-tight reem-kufi">التسجيل الخاص بالشيوخ</div>
+                    <div *ngIf="!fromEnseignant" dir="rtl" class="flex items-baseline mt-0.5 font-medium">
+                    <div  class="reem-kufi text-gray-400 text-lg">هل لديك حساب ?</div>
+                    <a
+                        class="ml-1 text-green-500 hover:underline"
+                        [routerLink]="['/account/sign-in']">تسجيل الدخول
+                    </a>
+
+                 </div>
+            </div>
             </div>
 
-            <!-- Title -->
-            <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Sign up</div>
-            <div class="flex items-baseline mt-0.5 font-medium">
-                <div>Already have an account?</div>
-                <a
-                    class="ml-1 text-primary-500 hover:underline"
-                    [routerLink]="['/sign-in']">Sign in
-                </a>
-            </div>
+            
 
             <!-- Alert -->
             <fuse-alert
@@ -29,34 +36,103 @@
 
             <!-- Sign Up form -->
             <form
-                class="mt-8"
+                class="mt-8 "
                 [formGroup]="signUpForm">
 
                 <!-- Name field -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
                 <mat-form-field class="w-full">
-                    <mat-label>Full name</mat-label>
+                    <mat-label>Nom en français</mat-label>
                     <input
-                        id="name"
+                        id="nom"
                         matInput
-                        [formControlName]="'name'">
-                    <mat-error *ngIf="signUpForm.get('name').hasError('required')">
+                        [formControlName]="'nom'">
+                    <mat-error *ngIf="signUpForm.get('nom').hasError('required')">
                         Full name is required
                     </mat-error>
                 </mat-form-field>
 
+                <mat-form-field class="w-full">
+                    <mat-label>Prenom en français</mat-label>
+                    <input
+                        id="prenom"
+                        matInput
+                        [formControlName]="'prenom'">
+                    <mat-error *ngIf="signUpForm.get('prenom').hasError('required')">
+                        Full Prenom is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                    <mat-label>Nom en arabe</mat-label>
+                    <input
+                        id="nomAr"
+                        matInput
+                        [formControlName]="'nomAr'">
+                    <mat-error *ngIf="signUpForm.get('nomAr').hasError('required')">
+                        Full Prenom is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                    <mat-label>Prenom en arabe</mat-label>
+                    <input
+                        id="prenomAr"
+                        matInput
+                        [formControlName]="'prenomAr'">
+                    <mat-error *ngIf="signUpForm.get('prenomAr').hasError('required')">
+                        Full Prenom is required
+                    </mat-error>
+                </mat-form-field>
+
+                
+                <mat-form-field class="w-full">
+                    <mat-label>Date de naissance</mat-label>
+                    <input
+                        id="dateNaissance"
+                        matInput
+                        type="date"
+                        [formControlName]="'dateNaissance'">
+                    <mat-error *ngIf="signUpForm.get('dateNaissance').hasError('required')">
+                        Full BirthDay is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                    <mat-label>Adresse</mat-label>
+                    <input
+                        id="adress"
+                        matInput
+                        [formControlName]="'adress'">
+                    <mat-error *ngIf="signUpForm.get('adress').hasError('required')">
+                        adress is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                    <mat-label>Telephone</mat-label>
+                    <input
+                        id="telephone"
+                        matInput
+                        [formControlName]="'telephone'">
+                    <mat-error *ngIf="signUpForm.get('telephone').hasError('required')">
+                        Full Telephone is required
+                    </mat-error>
+                </mat-form-field>
+
+
                 <!-- Email field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Email address</mat-label>
+                    <mat-label>UserName</mat-label>
                     <input
-                        id="email"
+                        id="username"
                         matInput
-                        [formControlName]="'email'">
-                    <mat-error *ngIf="signUpForm.get('email').hasError('required')">
+                        [formControlName]="'username'">
+                    <mat-error *ngIf="signUpForm.get('username').hasError('required')">
                         Email address is required
                     </mat-error>
-                    <mat-error *ngIf="signUpForm.get('email').hasError('email')">
-                        Please enter a valid email address
-                    </mat-error>
+                    
                 </mat-form-field>
 
                 <!-- Password field -->
@@ -87,42 +163,48 @@
                     </mat-error>
                 </mat-form-field>
 
-                <!-- Company field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Company</mat-label>
+                    <mat-label>Confirm Password</mat-label>
                     <input
-                        id="company-confirm"
+                        id="passwordC"
                         matInput
-                        [formControlName]="'company'">
-                </mat-form-field>
+                        type="passwordC"
+                        [formControlName]="'passwordC'"
+                        #passwordFieldConfirm>
+                    <button
+                        mat-icon-button
+                        type="button"
+                        (click)="passwordFieldConfirm.type === 'password' ? passwordFieldConfirm.type = 'text' : passwordFieldConfirm.type = 'password'"
+                        matSuffix>
+                        <mat-icon
+                            class="icon-size-5"
+                            *ngIf="passwordFieldConfirm.type === 'password'"
+                            [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                        <mat-icon
+                            class="icon-size-5"
+                            *ngIf="passwordFieldConfirm.type === 'text'"
+                            [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                    </button>
+                    <mat-error>
+                        Password is required
+                    </mat-error>
+                    
+                    <mat-error *ngIf="signUpForm.get('passwordC').touched && signUpForm.errors?.['notSame']">
+                        Les mots de passe ne correspondent pas.
+                      </mat-error>
+                </mat-form-field>                
 
-                <!-- ToS and PP -->
-                <div class="inline-flex items-end w-full mt-1.5">
-                    <mat-checkbox
-                        [color]="'primary'"
-                        [formControlName]="'agreements'">
-                        <span>I agree to the</span>
-                        <a
-                            class="ml-1 text-primary-500 hover:underline"
-                            [routerLink]="['./']">Terms of Service
-                        </a>
-                        <span>and</span>
-                        <a
-                            class="ml-1 text-primary-500 hover:underline"
-                            [routerLink]="['./']">Privacy Policy
-                        </a>
-                    </mat-checkbox>
                 </div>
 
                 <!-- Submit button -->
                 <button
-                    class="fuse-mat-button-large w-full mt-6"
+                    class="reem-kufi text-2xl fuse-mat-button-large w-full my-6 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
                     mat-flat-button
-                    [color]="'primary'"
+                    
                     [disabled]="signUpForm.disabled"
                     (click)="signUp()">
                     <span *ngIf="!signUpForm.disabled">
-                        Create your free account
+                        أنشاء حساب جديد
                     </span>
                     <mat-progress-spinner
                         *ngIf="signUpForm.disabled"
@@ -133,54 +215,36 @@
             </form>
         </div>
     </div>
-    <div class="relative hidden md:flex flex-auto items-center justify-center w-1/2 h-full p-16 lg:px-28 overflow-hidden bg-gray-800 dark:border-l">
+    <div *ngIf="!fromEnseignant" style="background-image: url('assets/images/back.jpg'); background-size: cover;" class="relative hidden md:flex  items-center justify-center w-1/2 md:h-[100vh] p-16 lg:px-28 overflow-hidden  dark:border-l">
+    <div class="absolute inset-0 bg-gray-900 opacity-50"></div>
         <!-- Background - @formatter:off -->
         <!-- Rings -->
-        <svg class="absolute inset-0 pointer-events-none"
-             viewBox="0 0 960 540" width="100%" height="100%" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-            <g class="text-gray-700 opacity-25" fill="none" stroke="currentColor" stroke-width="100">
-                <circle r="234" cx="196" cy="23"></circle>
-                <circle r="234" cx="790" cy="491"></circle>
-            </g>
-        </svg>
+        <div class="absolute inset-0 pointer-events-none">
+            <img src="assets/images/logo.jpg" alt="" class="absolute bottom-10 left-16 w-32 h-32 opacity-20 rounded-full">
+        </div>
         <!-- Dots -->
-        <svg class="absolute -top-16 -right-16 text-gray-700"
-             viewBox="0 0 220 192" width="220" height="192" fill="none">
-            <defs>
-                <pattern id="837c3e70-6c3a-44e6-8854-cc48c737b659" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                    <rect x="0" y="0" width="4" height="4" fill="currentColor"></rect>
-                </pattern>
-            </defs>
-            <rect width="220" height="192" fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"></rect>
-        </svg>
+        <div class="absolute inset-0 pointer-events-none">
+           <img src="assets/images/logo.jpg" alt="" class="absolute  w-32 h-32 bottom-10 right-16 opacity-20 rounded-full">
+        </div>
         <!-- @formatter:on -->
         <!-- Content -->
         <div class="z-10 relative w-full max-w-2xl">
-            <div class="text-7xl font-bold leading-none text-gray-100">
-                <div>Welcome to</div>
-                <div>our community</div>
+            <div dir="rtl" class="text-7xl font-bold leading-none text-gray-100 text-center">
+                <div class="text-5xl reem-kufi">بــــسم الله الرحمـن الرحيم</div>
+                <div class="text-2xl reem-kufi mt-2">السلام عليكم</div>
             </div>
-            <div class="mt-6 text-lg tracking-tight leading-6 text-gray-400">
-                Fuse helps developers to build organized and well coded dashboards full of beautiful and rich modules.
-                Join us and start building your application today.
+            <div class="mt-6 text-xl reem-kufi tracking-tight leading-6 text-gray-400 text-center">
+                مرحبا بكم في منصة الإدارة عن بعد، نحن هنا لمساعدتك في تحقيق أهدافك التعليمية. 
             </div>
-            <div class="flex items-center mt-8">
-                <div class="flex flex-0 items-center -space-x-1.5">
-                    <img
-                        class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
-                        src="assets/images/avatars/female-18.jpg">
-                    <img
-                        class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
-                        src="assets/images/avatars/female-11.jpg">
-                    <img
-                        class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
-                        src="assets/images/avatars/male-09.jpg">
-                    <img
-                        class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
-                        src="assets/images/avatars/male-16.jpg">
-                </div>
-                <div class="ml-4 font-medium tracking-tight text-gray-400">More than 17k people joined us, it's your turn</div>
-            </div>
+            
         </div>
     </div>
 </div>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&display=swap');
+    .reem-kufi{
+    font-family: "Reem Kufi", sans-serif;
+    font-optical-sizing: auto;
+  }
+</style>
+

@@ -12,7 +12,7 @@ export const appRoutes: Route[] = [
     // Redirect empty path to '/dashboards/project'
     {path: '', pathMatch : 'full', redirectTo: 'dashboards/statistics'},
     {path: 'public', loadChildren: () => import('app/modules/public/public.module').then(m => m.PublicModule)},
-
+    
     // Redirect signed in user to the '/dashboards/project'
     //
     // After the user signs in, the sign in page will redirect the user to the 'signed-in-redirect'
@@ -22,13 +22,13 @@ export const appRoutes: Route[] = [
 
     // Auth routes for guests
     {
-        path: '',
-        canActivate: [NoAuthGuard],
-        canActivateChild: [NoAuthGuard],
-        component: LayoutComponent,
-        data: {
-            layout: 'empty'
-        },
+        path: 'account',
+        // canActivate: [],
+        // canActivateChild: [],
+        // component: LayoutComponent,
+        // data: {
+        //     layout: 'empty'
+        // },
         children: [
             {path: 'confirmation-required', loadChildren: () => import('app/modules/auth/confirmation-required/confirmation-required.module').then(m => m.AuthConfirmationRequiredModule)},
             {path: 'forgot-password', loadChildren: () => import('app/modules/auth/forgot-password/forgot-password.module').then(m => m.AuthForgotPasswordModule)},
@@ -84,7 +84,10 @@ export const appRoutes: Route[] = [
                 {path: 'crypto', loadChildren: () => import('app/modules/admin/dashboards/crypto/crypto.module').then(m => m.CryptoModule)},
                 {path: 'statistics', loadChildren: () => import('app/modules/admin/dashboards/statistics/statistics.module').then(m => m.StatisticsModule)},
                 {path: 'etudiants', loadChildren: () => import('app/modules/admin/dashboards/etudiant/etudiant.module').then(m => m.EtudiantModule)},
-                {path: 'niveau-etude' , loadChildren: () => import('app/modules/admin/dashboards/niveau-etude/niveau-etude.module').then(m => m.NiveauEtudeModule)}
+                {path: 'niveau-etude' , loadChildren: () => import('app/modules/admin/dashboards/niveau-etude/niveau-etude.module').then(m => m.NiveauEtudeModule)},
+                {path: 'seances' , loadChildren: () => import('app/modules/admin/dashboards/seances/seances.module').then(m => m.SeancesModule)},
+                {path: 'enseignant' , loadChildren:() => import('app/modules/admin/dashboards/enseignent/enseignent.module').then(m => m.EnseignentModule) }
+
             ]},
 
             // Apps

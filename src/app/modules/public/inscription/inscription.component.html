@@ -42,7 +42,7 @@
                                 (change)="onPhotoTaken($event)"
                                 #avatarFileInput>
                             <label
-                                class="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-green-400"
+                                class="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-green-500"
                                 for="avatar-file-input"
                                 matRipple>
                                 <mat-icon
@@ -51,20 +51,20 @@
                             </label>
                         </div>
                         <div>
-                            <button
-                                mat-icon-button
-                                (click)="onPhotoTaken($event)">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-red-400"
+                                (click)="deletePhoto()">
                                 <mat-icon
                                     class="text-white"
                                     [svgIcon]="'heroicons_outline:trash'"></mat-icon>
-                            </button>
+                          </div>
                         </div>
                     </div>
                     <!-- Image/Letter -->
                     <img
                         class="object-cover w-full h-full"
-                        *ngIf="etudiantForm.get('photoUrl')?.value"
-                        [src]="">
+                        *ngIf="photoPreview"
+                        [src]="photoPreview">
                     
                 </div>
             </div>

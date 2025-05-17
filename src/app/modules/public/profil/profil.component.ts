@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EtudiantDetailsDto, EtudiantsDto } from 'app/models/models';
 import { EtudiantsService } from 'app/services/etudiants.service';
+import { GalleryService } from 'app/services/gallery.service';
 import { ReferencesService } from 'app/services/references.service';
 import { map } from 'rxjs';
 
@@ -17,11 +18,14 @@ export class ProfilComponent implements OnInit {
   id:string
   niveauEtudeLabel:string
   niveauEtudeLabelAr:string
+
+  image:string=null
   constructor(
     private viewportScroller: ViewportScroller,
     private etdService:EtudiantsService,
     private refService:ReferencesService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private serviceGallery:GalleryService
   ) {
     this.id=route.snapshot.paramMap.get('id');
    }
@@ -44,7 +48,13 @@ export class ProfilComponent implements OnInit {
   getEtudiant(id:string){
     this.etdService.getEtudiantDetailsById(id).subscribe((res)=>{
       this.etudiant=res
+      this.getEtudiantPhoto(res.id)
+    })
+  }
 
+  getEtudiantPhoto(id:string){
+    this.serviceGallery.getPhoto(id).subscribe((res)=>{
+      this.image="data:image/jpeg;base64,"+res
     })
   }
 

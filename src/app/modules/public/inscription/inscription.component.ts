@@ -101,10 +101,12 @@ export class InscriptionComponent implements OnInit {
         this.etudiantForm.controls['nomPere'].setValue("");
         
       }
+
+      this.etudiantForm.controls['dateInscription'].setValue(this.etudiantForm.controls['dateNaissance'].value);
         
     if(this.etudiantForm.valid){
       this.loading=true
-      this.serviceEtd.createEtudiantDetails(this.etudiantForm.value).subscribe(result=>{
+      this.serviceEtd.createEtudiantDetails(this.etudiantForm.value,this.file).subscribe(result=>{
         this.afficherSucces()
         this.loading=false
         this.router.navigate(['public',result.id])
@@ -141,17 +143,23 @@ export class InscriptionComponent implements OnInit {
   }
 
 
-  photoPreview: string | ArrayBuffer | null = null;
+  photoPreview: string |ArrayBuffer | null = null;
+  file:File | null = null;
 
   onPhotoTaken(event: Event) {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
+    this.file = (event.target as HTMLInputElement).files?.[0];
+    if (this.file) {
       const reader = new FileReader();
       reader.onload = () => {
         this.photoPreview = reader.result;
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(this.file);
     }
+  }
+  deletePhoto(){
+    console.log(this.photoPreview)
+    this.photoPreview = null;
+    this.file= null;
   }
   
 
