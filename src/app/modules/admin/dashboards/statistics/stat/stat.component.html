@@ -5,22 +5,21 @@
         <div class="flex flex-col w-full max-w-screen-xl mx-auto px-6 sm:px-8">
             <div class="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 my-8 sm:my-12">
                 <!-- Avatar and name -->
-                <div class="flex flex-auto items-center min-w-0">
-                    <div class="flex-0 w-16 h-16 rounded-full overflow-hidden">
+                <div class="flex flex-auto items-center justify-end min-w-0">
+                    
+                    <div dir="rtl"class="flex flex-col min-w-0 mr-4">
+                        
+                            <div   class="text-5xl font-semibold tracking-tight leading-7 md:leading-snug truncate reem-kufi">السلام عليكــــم</div>
+                        
+                        <div class="flex items-center">
+                            
+                            <div class="ml-1.5 leading-6 truncate text-secondary reem-kufi">مرحبا بكم في لوحة التحكم</div>
+                        </div>
+                    </div>
+                    <div class="flex-0 w-20 h-20 rounded-full overflow-hidden">
                         <img
                             class="w-full h-full object-cover"
                             src="assets/images/avatars/brian-hughes.jpg">
-                    </div>
-                    <div class="flex flex-col min-w-0 ml-4">
-                        
-                            <div class="text-2xl md:text-5xl font-semibold tracking-tight leading-7 md:leading-snug truncate">السلام عليكم</div>
-                        
-                        <div class="flex items-center">
-                            <mat-icon
-                                class="icon-size-5"
-                                [svgIcon]="'heroicons_solid:bell'"></mat-icon>
-                            <div class="ml-1.5 leading-6 truncate text-secondary">You have 2 new messages and 15 new tasks</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -36,8 +35,8 @@
                     
                 </div>
                 <div class="flex flex-col items-center mt-2">
-                    <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-blue-500">{{stat.value}}</div>
-                    <div class="text-lg font-medium text-blue-600 dark:text-blue-500">{{stat.subtitle}}</div>
+                    <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-green-500">{{stat.value}}</div>
+                    <div class="text-lg font-medium text-green-600 dark:text-green-500">{{stat.subtitle}}</div>
                     <!-- <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
                         <div class="text-md font-medium truncate">Completed:</div>
                         <div class="ml-1.5 text-lg font-semibold">13</div>

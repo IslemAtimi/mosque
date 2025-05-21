@@ -14,7 +14,7 @@ export class EnseignantService {
   
   getEnseignants(): Observable<EnseignantDto[]>
   {
-      return this.httpClient.get<EnseignantDto[]>('http://localhost:7171/enseignent/lookup');
+      return this.httpClient.get<EnseignantDto[]>('https://api.caspiran.fr/mosque/enseignent/lookup');
   }
   createEnseignant(data :RegisterInput): Observable<EnseignantDto>
   {const formData = new FormData();
@@ -29,7 +29,7 @@ export class EnseignantService {
     formData.append('Telephone', data.telephone);
     formData.append('Username', data.username);
     formData.append('Password', data.password);
-      return this.httpClient.post<EnseignantDto>('http://localhost:7171/enseignent',formData);
+      return this.httpClient.post<EnseignantDto>('https://api.caspiran.fr/mosque/enseignent',formData);
   }
 
   login(username: string, password: string): Observable<TokenResponse> {
@@ -37,6 +37,6 @@ export class EnseignantService {
       .set('userName', username)
       .set('password', password);
 
-    return this.httpClient.get<TokenResponse>('http://localhost:7171/enseignent/login', { params });
+    return this.httpClient.get<TokenResponse>('https://api.caspiran.fr/mosque/enseignent/login', { params });
   }
 }

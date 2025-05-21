@@ -105,16 +105,7 @@
                         [mode]="'indeterminate'"></mat-progress-spinner>
                 </button>
 
-                <button
-                    class="fuse-mat-button-large w-full mt-6 bg-green-500 text-white reem-kufi hover:bg-green-700"
-                    mat-flat-button
-                    [color]="'secondary'"
-                    >
-                    <span >
-                        العودة إلى الصفحة الرئيسية
-                    </span>
-                    
-                </button>
+               
 
                 <!-- Separator -->
                 <!-- <div class="flex items-center mt-8">
@@ -151,6 +142,17 @@
                     </button>
                 </div> -->
             </form>
+            <button
+                    (click)="goToHome()"
+                    class="fuse-mat-button-large w-full mt-6 bg-gray-500 text-white reem-kufi hover:bg-gray-700"
+                    mat-flat-button
+                    [color]="'secondary'"
+                    >
+                    <span >
+                        العودة إلى الصفحة الرئيسية
+                    </span>
+                    
+                </button>
         </div>
     </div>
     <div style="background-image: url('assets/images/back.jpg'); background-size: cover;" class="relative hidden md:flex  items-center justify-center w-1/2 md:h-[100vh] p-16 lg:px-28 overflow-hidden  dark:border-l">

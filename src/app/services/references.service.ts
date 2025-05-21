@@ -12,7 +12,7 @@ export class ReferencesService {
   
     getNiveauEtudes(): Observable<NiveauEtudeDto[]>
         {
-            return this._httpClient.get<NiveauEtudeDto[]>('http://localhost:7171/niveau-etude');
+            return this._httpClient.get<NiveauEtudeDto[]>('https://api.caspiran.fr/mosque/niveau-etude');
         }
 
         createNiveauEtude(input: CreateNiveauEtudeDto): Observable<NiveauEtudeDto> {
@@ -21,10 +21,10 @@ export class ReferencesService {
             .set('labelAr', input.labelAr)
             .set('order', input.order.toString());
         
-          return this._httpClient.post<NiveauEtudeDto>('http://localhost:7171/niveau-etude', null, { params });
+          return this._httpClient.post<NiveauEtudeDto>('https://api.caspiran.fr/mosque/niveau-etude', null, { params });
         }
 
         deleteNiveauEtude(id: number): Observable<void> {
-          return this._httpClient.delete<void>('http://localhost:7171/niveau-etude/' + id);
+          return this._httpClient.delete<void>('https://api.caspiran.fr/mosque/niveau-etude/' + id);
         }
 }

@@ -7,6 +7,7 @@ import { Navigation } from 'app/core/navigation/navigation.types';
 import { NavigationService } from 'app/core/navigation/navigation.service';
 import { User } from 'app/core/user/user.types';
 import { UserService } from 'app/core/user/user.service';
+import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
     selector     : 'classy-layout',
@@ -28,12 +29,20 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
         private _router: Router,
         private _navigationService: NavigationService,
         private _userService: UserService,
+        private _authService: AuthService,
         private _fuseMediaWatcherService: FuseMediaWatcherService,
         private _fuseNavigationService: FuseNavigationService
     )
     {
+        this.userName= _authService.userName
+        this.phone=_authService.phone
     }
+   
+    
+      userName:string=""
+      phone:string=""
 
+      isLogin=false
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
@@ -77,6 +86,10 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
                 // Check if the screen is small
                 this.isScreenSmall = !matchingAliases.includes('md');
             });
+        
+            this._authService.check().subscribe(res =>{
+                this.isLogin=res
+            } )
     }
 
     /**

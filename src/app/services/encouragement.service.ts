@@ -11,6 +11,6 @@ export class EncouragementService {
   constructor(private _httpClient: HttpClient){ }
 
   getEncouragementCards(id:string) : Observable<EncouragementCardDto[]>{
-  return this._httpClient.get<EncouragementCardDto[]>('http://localhost:7171/encouragement/'+id);
+  return this._httpClient.get<EncouragementCardDto[]>('https://api.caspiran.fr/mosque/encouragement/'+id);
   }
 }

@@ -105,7 +105,12 @@ export class AuthSignUpComponent implements OnInit
                 (response) => {
 
                     // Navigate to the confirmation required page
-                    this._router.navigateByUrl('/account/sign-in');
+                    if (this.fromEnseignant) {
+                        this._router.navigate(['/dashboards/enseignant']);
+                    }
+                    else {
+                        this._router.navigateByUrl('/account/sign-in');
+                    }
                 },
                 (response) => {
 

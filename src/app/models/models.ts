@@ -114,6 +114,8 @@ export interface EtudiantDetailsDto {
   export interface TokenResponse {
     token: string;
     status: string;
+    phone:string,
+    userName:string
   }
 
 

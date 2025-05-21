@@ -28,8 +28,8 @@
             <div class="relative w-24 h-24">
                 <img
                     class="w-full h-full rounded-full"
-                    *ngIf="user.avatar"
-                    [src]="user.avatar"
+                    *ngIf="user?.avatar"
+                    [src]="user?.avatar"
                     alt="User avatar">
                 <mat-icon
                     class="icon-size-24"
@@ -38,10 +38,10 @@
             </div>
             <div class="flex flex-col items-center justify-center w-full mt-6">
                 <div class="w-full whitespace-nowrap text-ellipsis overflow-hidden text-center leading-normal font-medium">
-                    {{user.name}}
+                    {{userName}}
                 </div>
                 <div class="w-full mt-0.5 whitespace-nowrap text-ellipsis overflow-hidden text-center text-md leading-normal font-medium text-white">
-                    {{user.email}}
+                    {{phone  }}
                 </div>
             </div>
         </div>
@@ -69,15 +69,16 @@
         </button>
         <!-- Components -->
         <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
-            <languages></languages>
+            <!-- <languages></languages> -->
             <fuse-fullscreen class="hidden md:block"></fuse-fullscreen>
-            <search [appearance]="'bar'"></search>
+            <!-- <search [appearance]="'bar'"></search>
             <shortcuts></shortcuts>
-            <messages></messages>
+            <messages></messages> -->
             <button
+                *ngIf="!isLogin"
                 class="lg:hidden"
                 mat-icon-button
-                (click)="quickChat.toggle()">
+                routerLink="account/sign-in">
                 <mat-icon [svgIcon]="'heroicons_outline:chat-alt-2'"></mat-icon>
             </button>
         </div>
@@ -98,4 +99,4 @@
 </div>
 
 <!-- Quick chat -->
-<quick-chat #quickChat="quickChat"></quick-chat>
+<!-- <quick-chat #quickChat="quickChat"></quick-chat> -->

@@ -81,6 +81,8 @@ export class AuthSignInComponent implements OnInit
                     console.log(next);
                     if(next!=null){
                         this._authService.accessToken = next.token;
+                        this._authService.userName = next.userName;
+                        this._authService.phone = next.phone;
 
                         // Redirect the user
                         this._router.navigate(['']);
@@ -104,5 +106,9 @@ export class AuthSignInComponent implements OnInit
                     this.showAlert = true;
                 }
             );
+    }
+
+    goToHome(){
+        this._router.navigate(['']);
     }
 }

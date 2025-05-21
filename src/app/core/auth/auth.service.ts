@@ -36,6 +36,26 @@ export class AuthService
         return localStorage.getItem('accessToken') ?? '';
     }
 
+    set phone(phone: string)
+    {
+        localStorage.setItem('phone', phone);
+    }
+
+    get phone(): string
+    {
+        return localStorage.getItem('phone') ?? '';
+    }
+
+    set userName(username: string)
+    {
+        localStorage.setItem('username', username);
+    }
+
+    get userName(): string
+    {
+        return localStorage.getItem('username') ?? '';
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------

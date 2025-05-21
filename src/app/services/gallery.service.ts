@@ -11,7 +11,7 @@ export class GalleryService {
   
     getPhoto(id:string): Observable<string>
         {
-            return this._httpClient.get<string>('http://localhost:7171/file/'+id+'/image');
+            return this._httpClient.get<string>('https://api.caspiran.fr/mosque/file/'+id+'/image');
         }
       }
 

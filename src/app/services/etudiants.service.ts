@@ -12,30 +12,30 @@ export class EtudiantsService {
 
   getEtudiants(): Observable<Pagedresult<EtudiantsDto[]>>
       {
-          return this._httpClient.get<Pagedresult<EtudiantsDto[]>>('http://localhost:7171/etudiants');
+          return this._httpClient.get<Pagedresult<EtudiantsDto[]>>('https://api.caspiran.fr/mosque/etudiants');
       }
 
       searchEtudiants(filter: string):Observable<Pagedresult<EtudiantsDto[]>>
     {
         const params = new HttpParams().set('Filter', filter);
-        return this._httpClient.get<Pagedresult<EtudiantsDto[]>>('http://localhost:7171/etudiants', {
+        return this._httpClient.get<Pagedresult<EtudiantsDto[]>>('https://api.caspiran.fr/mosque/etudiants', {
             params
         });
     }
 
     getEtudiantById(id:string): Observable<EtudiantsDto>
       {
-          return this._httpClient.get<EtudiantsDto>('http://localhost:7171/etudiants/'+id);
+          return this._httpClient.get<EtudiantsDto>('https://api.caspiran.fr/mosque/etudiants/'+id);
       }
 
       getEtudiantDetailsById(id:string): Observable<EtudiantDetailsDto>
       {
-          return this._httpClient.get<EtudiantDetailsDto>('http://localhost:7171/etudiants/details/'+id);
+          return this._httpClient.get<EtudiantDetailsDto>('https://api.caspiran.fr/mosque/etudiants/details/'+id);
       }
 
       deleteEtudiant(id:string){
         const params = new HttpParams().set('id', id);
-        return this._httpClient.delete('http://localhost:7171/etudiants',{params});
+        return this._httpClient.delete('https://api.caspiran.fr/mosque/etudiants',{params});
       }
 
       createEtudiantDetails(data: InscriptionDto,photo?:File) {
@@ -78,11 +78,11 @@ export class EtudiantsService {
 
     if(photo!=null )formData.append('file', photo);
     
-        return this._httpClient.post<EtudiantsDto>('http://localhost:7171/etudiants/inscription', formData);
+        return this._httpClient.post<EtudiantsDto>('https://api.caspiran.fr/mosque/etudiants/inscription', formData);
       }
 
       getEtudiantWithInscription(id:string): Observable<InscriptionDto> {
-        return this._httpClient.get<InscriptionDto>('http://localhost:7171/etudiants/inscription'+id);
+        return this._httpClient.get<InscriptionDto>('https://api.caspiran.fr/mosque/etudiants/inscription'+id);
       }
     }
 
